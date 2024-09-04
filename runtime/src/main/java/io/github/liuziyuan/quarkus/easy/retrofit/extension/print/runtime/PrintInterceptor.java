@@ -12,6 +12,7 @@ import java.io.IOException;
 @ApplicationScoped
 public class PrintInterceptor extends BaseInterceptor {
     private static final Logger LOG = Logger.getLogger(PrintInterceptor.class);
+
     @Inject
     RetrofitResourceContext context;
 
@@ -25,6 +26,6 @@ public class PrintInterceptor extends BaseInterceptor {
 
     @Override
     protected RetrofitResourceContext getInjectedRetrofitResourceContext() {
-        return this.context;
+        return context;
     }
 }
