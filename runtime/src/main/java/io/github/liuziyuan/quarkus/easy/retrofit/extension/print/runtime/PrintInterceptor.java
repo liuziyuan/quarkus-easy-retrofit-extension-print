@@ -4,15 +4,14 @@ import io.github.easyretrofit.core.RetrofitResourceContext;
 import io.github.easyretrofit.core.extension.BaseInterceptor;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
+import org.jboss.logging.Logger;
 
 import java.io.IOException;
 
-@Slf4j
 @ApplicationScoped
 public class PrintInterceptor extends BaseInterceptor {
-
+    private static final Logger LOG = Logger.getLogger(PrintInterceptor.class);
     @Inject
     RetrofitResourceContext context;
 
@@ -20,7 +19,7 @@ public class PrintInterceptor extends BaseInterceptor {
     protected Response executeIntercept(Chain chain) throws IOException {
         PrintInfo printInfoAnnotation = (PrintInfo) super.getExtensionAnnotation(PrintInfo.class);
         String value = printInfoAnnotation.value();
-        log.info("{}{}", value, chain.request().method());
+        LOG.info(value + chain.request().method());
         return chain.proceed(chain.request());
     }
 

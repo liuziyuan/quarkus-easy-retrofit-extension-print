@@ -12,5 +12,4 @@ class QuarkusEasyRetrofitExtensionPrintProcessor {
         return new FeatureBuildItem(FEATURE);
     }
 
-
 }
