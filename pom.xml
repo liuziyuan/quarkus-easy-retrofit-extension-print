@@ -22,6 +22,28 @@
         <surefire-plugin.version>3.3.1</surefire-plugin.version>
     </properties>
 
+    <url>https://github.com/liuziyuan/easy-retrofit-extension-print-spring-boot-starter</url>
+
+    <licenses>
+        <license>
+            <name>Apache2.0 License</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/liuziyuan/${project.artifactId}/tree/main</url>
+        <connection>scm:git:git://github.com/liuziyuan/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:ssh://github.com/liuziyuan/${project.artifactId}.git</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>liuziyuan</name>
+            <email>liuziyuan.room@gmail.com</email>
+        </developer>
+    </developers>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -71,6 +93,7 @@
                         <parameters>true</parameters>
                     </configuration>
                 </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
