@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.liuziyuan</groupId>
     <artifactId>quarkus-easy-retrofit-extension-print-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
     <name>Quarkus Easy Retrofit Extension Print - Parent</name>
 
@@ -22,7 +22,7 @@
         <surefire-plugin.version>3.3.1</surefire-plugin.version>
     </properties>
 
-    <url>https://github.com/liuziyuan/easy-retrofit-extension-print-spring-boot-starter</url>
+    <url>https://github.com/liuziyuan/quarkus-easy-retrofit-extension-print</url>
 
     <licenses>
         <license>
@@ -32,9 +32,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/liuziyuan/${project.artifactId}/tree/main</url>
-        <connection>scm:git:git://github.com/liuziyuan/${project.artifactId}.git</connection>
-        <developerConnection>scm:git:ssh://github.com/liuziyuan/${project.artifactId}.git</developerConnection>
+        <url>https://github.com/liuziyuan/quarkus-easy-retrofit-extension-print/tree/main</url>
+        <connection>scm:git:git://github.com/liuziyuan/quarkus-easy-retrofit-extension-print.git</connection>
+        <developerConnection>scm:git:ssh://github.com/liuziyuan/quarkus-easy-retrofit-extension-print.git</developerConnection>
     </scm>
 
     <developers>
@@ -43,6 +43,7 @@
             <email>liuziyuan.room@gmail.com</email>
         </developer>
     </developers>
+
 
     <dependencyManagement>
         <dependencies>
@@ -59,11 +60,7 @@
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-maven-plugin</artifactId>
-                    <version>${quarkus.version}</version>
-                </plugin>
+
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${surefire-plugin.version}</version>
@@ -93,7 +90,71 @@
                         <parameters>true</parameters>
                     </configuration>
                 </plugin>
-
+                <!-- Jar -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.4.2</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <!-- Source -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.3.1</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- Java Doc -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.8.0</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- GPG -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>3.2.4</version>
+                    <executions>
+                        <execution>
+                            <id>sign-artifacts</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.central</groupId>
+                    <artifactId>central-publishing-maven-plugin</artifactId>
+                    <version>0.5.0</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <publishingServerId>central</publishingServerId>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>

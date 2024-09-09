@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.github.liuziyuan</groupId>
         <artifactId>quarkus-easy-retrofit-extension-print-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
     <artifactId>quarkus-easy-retrofit-extension-print</artifactId>
     <name>Quarkus Easy Retrofit Extension Print - Runtime</name>
